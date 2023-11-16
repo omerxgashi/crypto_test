@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptocurrency Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .crypto-card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+        }
+        .crypto-info {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cryptocurrency Data</h1>
+    <!-- Loop through the cryptocurrency data -->
+    {% for crypto in data.data %}
+    <div class="crypto-card">
+        <div class="crypto-info">
+            <h2>{{ crypto.name }} ({{ crypto.symbol }})</h2>
+            <p>Rank: {{ crypto.rank }}</p>
+        </div>
+        <p>Price: ${{ crypto.priceUsd }}</p>
+        <p>Market Cap: ${{ crypto.marketCapUsd }}</p>
+        <p>Volume (24Hr): ${{ crypto.volumeUsd24Hr }}</p>
+        <p>Change (24Hr): {{ crypto.changePercent24Hr }}%</p>
+        <a href="{{ crypto.explorer }}" target="_blank">Explorer</a>
+    </div>
+    {% endfor %} <!-- Close the 'for' loop -->
+</body>
+</html>
